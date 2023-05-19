@@ -7,17 +7,25 @@ import telegram
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackQueryHandler
 
-from utils.handlers import (
-    start,
-    show_categories,
-    select_category,
-    answer,
-    score,
-    highscores,
-    leaderboard,
-    end,
-    next_question,
-)
+from utils.handlers import start
+from utils.handlers import show_categories
+from utils.handlers import select_category
+from utils.handlers import answer
+from utils.handlers import score
+from utils.handlers import highscores
+from utils.handlers import leaderboard
+from utils.handlers import end
+from utils.handlers import next_question
+   
+    
+    
+    
+   
+    
+
+  
+    
+
 from utils.database import setup_database, get_score, update_highscore, get_highscores, get_global_highscores
 from utils.models import QuizBot, load_categories, parse_questions
 
