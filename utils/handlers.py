@@ -5,24 +5,20 @@ import random
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import CommandHandler, CallbackQueryHandler
 
-# Import the required methods from the utils.database and utils.models modules
-from utils.database import setup_database, get_score, update_highscore, get_highscores, get_global_highscores
-from utils.models import load_categories
-
 class QuizBot:
-    def __init__(self, token, categories):
+    def __init__(self, token):
         self.bot = telegram.Bot(token=token)
         self.updater = Updater(token=token, use_context=True)
         self.dispatcher = self.updater.dispatcher
 
-        self.categories = categories
+        # Load the questions from the categories folder
+        self.categories = load_categories()
 
+        # Register the handlers
         self.register_handlers()
 
-        setup_database()
-
         # Set up the SQLite database for high scores
-        #setup_database()
+        setup_database()
 
     def register_handlers(self):
         self.dispatcher.add_handler(CommandHandler('start', self.start))
