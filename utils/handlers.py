@@ -4,6 +4,11 @@ import random
 
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import CommandHandler, CallbackQueryHandler
+from the utils.database and utils.models modules
+
+from utils.database import setup_database, get_score, update_highscore, get_highscores, get_global_highscores
+
+from utils.models import load_categories
 
 class QuizBot:
     def __init__(self, token):
