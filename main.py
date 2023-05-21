@@ -6,15 +6,12 @@ import sqlite3
 import telegram
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackQueryHandler
-
 from utils.handlers import QuizBot
-
 from utils.database import setup_database
 from utils.models import load_categories, parse_questions
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     datefmt='%Y-%m-%d %H:%M:%S')
-
 def main():
     with open('token.txt', 'r') as f:
         token = f.read().strip()
