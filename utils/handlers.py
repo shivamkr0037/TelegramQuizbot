@@ -6,19 +6,19 @@ from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import CommandHandler, CallbackQueryHandler
 
 class QuizBot:
-    def __init__(self, token):
+    def __init__(self, token, categories):
         self.bot = telegram.Bot(token=token)
         self.updater = Updater(token=token, use_context=True)
         self.dispatcher = self.updater.dispatcher
 
-        # Load the questions from the categories folder
-        self.categories = load_categories()
+        # Load the questions from the provided categories dictionary
+        self.categories = categories
 
         # Register the handlers
         self.register_handlers()
 
         # Set up the SQLite database for high scores
-        setup_database()
+        #setup_database()
 
     def register_handlers(self):
         self.dispatcher.add_handler(CommandHandler('start', self.start))
