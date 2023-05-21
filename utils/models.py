@@ -7,20 +7,12 @@ def load_categories():
     for filename in os.listdir(category_path):
         if filename.endswith('.json'):
             category_name = os.path.splitext(filename)[0]
-            with open(os.path.join(category_path, filename), 'r') as f:
-                questions = json.load(f)
-                categories[category_name] = parse_questions(questions)
-    return categories
-
-def load_categories():
-    categories = {}
-    category_path = 'categories'
-    for filename in os.listdir(category_path):
-        if filename.endswith('.json'):
-            category_name = os.path.splitext(filename)[0]
-            with open(os.path.join(category_path, filename), 'r') as f:
-                questions = json.load(f)
-                categories[category_name] = parse_questions(questions)
+            try:
+                with open(os.path.join(category_path, filename), 'r') as f:
+                    questions = json.load(f)
+                    categories[category_name] = parse_questions(questions)
+            except json.JSONDecodeError as e:
+                print(f"Error parsing {filename}: {e}")
     return categories
 
 def parse_questions(questions):
@@ -35,4 +27,3 @@ def parse_questions(questions):
             'correct_answer': correct_answer
         })
     return parsed_questions
-
