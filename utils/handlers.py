@@ -3,7 +3,7 @@ import telegram
 import random
 
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
-from telegram.ext import CommandHandler, CallbackQueryHandler
+from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackQueryHandler
 
 class QuizBot:
     def __init__(self, token, categories):
