@@ -66,7 +66,7 @@ class QuizBot:
             self.update_highscore(user_id, user_name, chat_id, context.chat_data['score'])
             query.bot.send_message(chat_id=chat_id, text=f"{user_first_name}, That's Correct! 🎉 Your score: {context.chat_data['score']}")
         else:
-            query.bot.send_message(chat_id=chat_id, text=f"Sorry {user_first_name}, that's incorrect. 😞 Your score: {context.chat_data['score']}")
+            query.bot.send_message(chat_id=chat_id, text=f"Sorry {user_first_name}, that's incorrect. 😞 The correct answer is {correct_answer}. Your score: {context.chat_data['score']}")
 
         context.chat_data['question_index'] += 1
         if context.chat_data['question_index'] < len(context.chat_data['questions']):
